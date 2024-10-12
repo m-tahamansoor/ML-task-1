@@ -9,16 +9,17 @@ DataBase = mysql.connector.connect(
 
 if DataBase.is_connected():
     print("Succesfully connected!")
+
+    cursor = DataBase.cursor()
+
+    query = "Select * from actor"
+
+    cursor.execute(query)
+
+    result = cursor.fetchall()
+
+    for rows in result:
+        print(rows)
+
 else:
     print("Not Connected!")
-
-cursor = DataBase.cursor()
-
-query = "Select * from actor"
-
-cursor.execute(query)
-
-result = cursor.fetchall()
-
-for rows in result:
-    print(rows)
